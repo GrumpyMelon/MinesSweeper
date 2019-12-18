@@ -37,7 +37,7 @@ class MSMineBoardConfig {
 
 class MSMinesManager: NSObject {
 
-    class func configModels(config: MSMineBoardConfig) -> Array<Array<MSMineItemViewModel>> {
+    class func configViewModel(config: MSMineBoardConfig) -> MSMainViewModel {
         //这里
         var numberSet: Set<Int> = Set()
         while numberSet.count !=  config.minesNumber{
@@ -46,24 +46,40 @@ class MSMinesManager: NSObject {
         let numberArray = Array(numberSet).sorted { (a, b) -> Bool in
             a < b
         }
-        print(numberArray)
         var index = 0
-        var result: Array<Array<MSMineItemViewModel>> = Array()
+        
+        let viewModel = MSMainViewModel(config: config)
         for i in 0 ..< config.boardRow {
             var rowArray: Array<MSMineItemViewModel> = Array<MSMineItemViewModel>()
             for j in 0 ..< config.boardCol {
+                //创建所有的model
                 let model: MSMineItemViewModel = MSMineItemViewModel()
                 if index < numberArray.count && (i * 10 + j) == numberArray[index] {
                     model.itemType = .Mine
                     index += 1
+                    viewModel.minesIndexArray.append((i, j))
                 } else {
-                    model.itemType = .Blank
+                    model.itemType = .Number
                 }
                 rowArray.append(model)
             }
-            result.append(rowArray)
+            viewModel.itemsModelArray.append(rowArray)
         }
         
-        return result
+        for (i, j) in viewModel.minesIndexArray {
+            print(i, j)
+            //遍历所有的地雷，给四周的格子增加number
+            let aroundItemIndex : Array<(Int, Int)> = [(i - 1, j - 1), (i, j - 1), (i + 1, j - 1),
+                                                       (i - 1, j),                 (i + 1, j),
+                                                       (i - 1, j + 1), (i, j + 1), (i + 1, j + 1)]
+            for (iAround, jAround) in aroundItemIndex {
+                let model : MSMineItemViewModel? = viewModel.itemsModelArray[safe: iAround]?[safe: jAround]
+                if model != nil && model!.itemType == .Number {
+                    model!.minesNumber += 1;
+                }
+            }
+        }
+        
+        return viewModel
     }
 }

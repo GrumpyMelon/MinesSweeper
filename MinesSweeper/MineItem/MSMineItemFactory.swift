@@ -14,8 +14,6 @@ class MSMineItemFactory: NSObject {
         switch model.itemType {
         case .Mine:
             itemView = MSMineItemMineView(frame: frame)
-        case .Blank:
-            itemView = MSMineItemBlankView(frame: frame)
         case .Number:
             itemView = MSMineItemNumberView(frame: frame)
             itemView.setNumber(model.minesNumber)

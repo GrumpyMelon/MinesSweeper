@@ -11,7 +11,6 @@ import Cocoa
 enum MSMineItemType: Int {
     case Mine = 0
     case Number = 1
-    case Blank = 2
 }
 
 class MSMineItemViewModel: NSObject {
@@ -27,7 +26,7 @@ class MSMineItemViewModel: NSObject {
         
     override init() {
         itemRevealed = false
-        itemType = .Blank
+        itemType = .Number
         minesNumber = 0
         super.init()
     }

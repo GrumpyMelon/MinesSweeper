@@ -34,9 +34,14 @@ class MSMineItemNumberView: MSMineItemView {
     //MARK:
     
     override func setNumber(_ number: Int) -> Void {
-        numberLabel.integerValue = number
-        numberLabel.sizeToFit()
-        numberLabel.frame = NSRect(origin: CGPoint(x: (self.frame.width - numberLabel.frame.width) / 2.0, y: (self.frame.height - numberLabel.frame.height) / 2.0), size: numberLabel.frame.size)
+        if number == 0 {
+            numberLabel.isHidden = true
+        } else {
+            numberLabel.isHidden = false
+            numberLabel.integerValue = number
+            numberLabel.sizeToFit()
+            numberLabel.frame = NSRect(origin: CGPoint(x: (self.frame.width - numberLabel.frame.width) / 2.0, y: (self.frame.height - numberLabel.frame.height) / 2.0), size: numberLabel.frame.size)
+        }
     }
     
     

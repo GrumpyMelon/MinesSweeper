@@ -8,9 +8,9 @@
 
 import Cocoa
 
-class MSMineItemView: NSView {
+class MSMineItemView: MSFlippedView {
     var viewModel: MSMineItemViewModel!
-    var unravealView: NSView!
+    var unravealView: MSFlippedView!
     
     override init(frame: CGRect) {
         super.init(frame : frame)
@@ -20,7 +20,7 @@ class MSMineItemView: NSView {
         layer?.borderColor = NSColor.textColor.cgColor;
         
         viewModel = MSMineItemViewModel()
-        unravealView = NSView(frame: NSRect(origin: .zero, size: frame.size))
+        unravealView = MSFlippedView(frame: NSRect(origin: .zero, size: frame.size))
         unravealView.wantsLayer = true
         unravealView.layer?.backgroundColor = MSColor.itemNormalColor.cgColor
         self.addSubview(unravealView)

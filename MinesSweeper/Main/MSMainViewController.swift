@@ -10,8 +10,10 @@ import Cocoa
 
 class MSMainViewController: NSViewController {
 
+    var viewModel: MSMainViewModel?
+    
     override func loadView() {
-        view = NSView()
+        view = MSFlippedView()
     }
     
     override func viewDidLoad() {
@@ -19,26 +21,31 @@ class MSMainViewController: NSViewController {
         // Do view setup here.
         view.wantsLayer = true;
         view.layer?.backgroundColor = NSColor.windowBackgroundColor.cgColor;
-        
+        configModel()
         configMines()
     }
     
-    func configMines() {
+    func configModel() {
         let config = MSMineBoardConfig(type: .Small)
-        let models = MSMinesManager.configModels(config: config)
-        
+        self.viewModel = MSMinesManager.configViewModel(config: config)
+
+        // todo: 设置window大小的问题。
         let windowSize = CGSize(width: MSMacro.mineItemWidth * config.boardRow, height: MSMacro.mineItemWidth * config.boardCol);
         MSMacro.appDelegate.window.setContentSize(windowSize)
-
-        for i in 0 ..< config.boardRow {
-            for j in 0 ..< config.boardCol {
+    }
+    
+    func configMines() {
+        let viewModel: MSMainViewModel! = self.viewModel;
+        for i in 0 ..< viewModel.boardConfig.boardRow {
+            for j in 0 ..< viewModel.boardConfig.boardCol {
                 let origin = CGPoint(x:j * MSMacro.mineItemWidth, y:i * MSMacro.mineItemWidth)
                 let size = CGSize(width: MSMacro.mineItemWidth, height: MSMacro.mineItemWidth)
                 let frame = NSRect(origin: origin, size: size)
                 
-                let item: MSMineItemView = MSMineItemFactory.createItemView(model: models[i][j], frame: frame)
+                let item: MSMineItemView = MSMineItemFactory.createItemView(model: viewModel.itemsModelArray[i][j], frame: frame)
                 view.addSubview(item)
             }
         }
+        
     }
 }
