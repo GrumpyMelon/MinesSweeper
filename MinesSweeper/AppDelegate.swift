@@ -22,8 +22,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.backingType = .buffered
         mainViewController = MSMainViewController()
         window.contentViewController = mainViewController
-        window.setFrameOrigin(NSPoint(x: 700, y: 500))
-        window.setContentSize(CGSize(width: 300, height: 300))
+        window.setFrameOrigin(MSMacro.windowOrigin)
+        window.setContentSize(NSSize(width: 300, height: 60))
         window.styleMask.remove(.resizable)
 
         windowController = NSWindowController()

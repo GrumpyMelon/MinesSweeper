@@ -31,7 +31,7 @@ class MSMineItemNumberView: MSMineItemView {
         super.init(coder: aDecoder)
     }
     
-    //MARK:
+    //MARK: set Number
     
     override func setNumber(_ number: Int) -> Void {
         if number == 0 {
@@ -43,12 +43,4 @@ class MSMineItemNumberView: MSMineItemView {
             numberLabel.frame = NSRect(origin: CGPoint(x: (self.frame.width - numberLabel.frame.width) / 2.0, y: (self.frame.height - numberLabel.frame.height) / 2.0), size: numberLabel.frame.size)
         }
     }
-    
-    
-    override func draw(_ dirtyRect: NSRect) {
-        super.draw(dirtyRect)
-
-        // Drawing code here.
-    }
-    
 }

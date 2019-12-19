@@ -15,14 +15,14 @@ class MSMineItemView: MSFlippedView {
     override init(frame: CGRect) {
         super.init(frame : frame)
         wantsLayer = true
-        layer?.backgroundColor = MSColor.itemSelectedColor.cgColor
+        layer?.backgroundColor = MSColor.itemNormalColor.cgColor
         layer?.borderWidth = 1;
         layer?.borderColor = NSColor.textColor.cgColor;
         
         viewModel = MSMineItemViewModel()
         unravealView = MSFlippedView(frame: NSRect(origin: .zero, size: frame.size))
         unravealView.wantsLayer = true
-        unravealView.layer?.backgroundColor = MSColor.itemNormalColor.cgColor
+        unravealView.layer?.backgroundColor = MSColor.itemMaskColor.cgColor
         self.addSubview(unravealView)
     }
     

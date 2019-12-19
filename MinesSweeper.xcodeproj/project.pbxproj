@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		809C718523A8E6AC0026ACDF /* MSArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809C718423A8E6AC0026ACDF /* MSArrayExtension.swift */; };
 		809C718723AA074B0026ACDF /* MSFlippedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809C718623AA074B0026ACDF /* MSFlippedView.swift */; };
+		809C718E23AB6AD60026ACDF /* MSMineTopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809C718D23AB6AD60026ACDF /* MSMineTopBar.swift */; };
 		80B4677A239E5AE000EBD92C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B46779239E5AE000EBD92C /* AppDelegate.swift */; };
 		80B4677C239E5AE200EBD92C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80B4677B239E5AE200EBD92C /* Assets.xcassets */; };
 		80B4678B239E5C0600EBD92C /* MSMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B4678A239E5C0600EBD92C /* MSMainViewController.swift */; };
@@ -26,6 +27,7 @@
 /* Begin PBXFileReference section */
 		809C718423A8E6AC0026ACDF /* MSArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSArrayExtension.swift; sourceTree = "<group>"; };
 		809C718623AA074B0026ACDF /* MSFlippedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSFlippedView.swift; sourceTree = "<group>"; };
+		809C718D23AB6AD60026ACDF /* MSMineTopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSMineTopBar.swift; sourceTree = "<group>"; };
 		80B46776239E5AE000EBD92C /* MinesSweeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MinesSweeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80B46779239E5AE000EBD92C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		80B4677B239E5AE200EBD92C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -54,6 +56,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		809C718C23AB6AA50026ACDF /* TopBar */ = {
+			isa = PBXGroup;
+			children = (
+				809C718D23AB6AD60026ACDF /* MSMineTopBar.swift */,
+			);
+			path = TopBar;
+			sourceTree = "<group>";
+		};
 		80B4676D239E5AE000EBD92C = {
 			isa = PBXGroup;
 			children = (
@@ -73,10 +83,11 @@
 		80B46778239E5AE000EBD92C /* MinesSweeper */ = {
 			isa = PBXGroup;
 			children = (
+				80B46779239E5AE000EBD92C /* AppDelegate.swift */,
 				80B46787239E5B8F00EBD92C /* Main */,
+				809C718C23AB6AA50026ACDF /* TopBar */,
 				80B46791239E7AFA00EBD92C /* MineItem */,
 				80B4678C239E69B600EBD92C /* Util */,
-				80B46779239E5AE000EBD92C /* AppDelegate.swift */,
 				80B4678F239E6E1600EBD92C /* main.swift */,
 				80B4677B239E5AE200EBD92C /* Assets.xcassets */,
 				80B46780239E5AE200EBD92C /* Info.plist */,
@@ -198,6 +209,7 @@
 				80B46790239E6E1600EBD92C /* main.swift in Sources */,
 				809C718723AA074B0026ACDF /* MSFlippedView.swift in Sources */,
 				80B4678B239E5C0600EBD92C /* MSMainViewController.swift in Sources */,
+				809C718E23AB6AD60026ACDF /* MSMineTopBar.swift in Sources */,
 				809C718523A8E6AC0026ACDF /* MSArrayExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
