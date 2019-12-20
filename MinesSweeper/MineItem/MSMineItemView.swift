@@ -11,6 +11,7 @@ import Cocoa
 class MSMineItemView: MSFlippedView {
     var viewModel: MSMineItemViewModel!
     var unrevealView: MSFlippedView!
+    var flagView: NSImageView?
     var revealed: Bool!
     var buttonAction: ButtonAction?
 
@@ -40,6 +41,9 @@ class MSMineItemView: MSFlippedView {
             unrevealView.removeFromSuperview()
             revealed = true
         }
+        if flagView != nil && flagView!.superview == self {
+            flagView!.removeFromSuperview()
+        }
     }
     
     //MARK: tap event
@@ -47,6 +51,23 @@ class MSMineItemView: MSFlippedView {
     override func mouseUp(with event: NSEvent) {
         if buttonAction != nil {
             buttonAction!()
+        }
+        //Do not call this function before buttonAction closure.
+        self.revealItem()
+    }
+    
+    override func rightMouseUp(with event: NSEvent) {
+        if revealed {
+            return;
+        }
+        if flagView == nil {
+            flagView = NSImageView(image: NSImage(named: NSImage.Name("flag_icon"))!)
+            flagView!.frame = self.bounds
+        }
+        if flagView!.superview == self {
+            flagView!.removeFromSuperview()
+        } else {
+            self.addSubview(flagView!)
         }
     }
     

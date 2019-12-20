@@ -120,14 +120,22 @@ class MSMainViewController: NSViewController {
     
     func revealBlankItemAround(_ i: Int, _ j: Int) {
         let item: MSMineItemView? = self.itemViewArray[safe: i]?[safe: j]
-        if item != nil && !item!.revealed && item!.viewModel.itemType == .Number && item!.viewModel.minesNumber == 0 {
-            //Reveal blank item
-            item!.revealItem()
-        } else {
+        let needReveal: Bool = (item != nil && !item!.revealed && item!.viewModel.itemType == .Number)
+        let needRecursiveReveal: Bool = (needReveal && item!.viewModel.minesNumber == 0)
+        
+        if !needReveal {
             //Not a blank item, then return.
+            return
+        }
+        //Reveal blank item and number item
+        item!.revealItem()
+        if !needRecursiveReveal {
             return;
         }
+        //Recursively reveal blank item
+        
         //Only four items
+        //todo： if current item is blank, would the diagonal one be reevealed?
         let needBeRevealedItems: Array<(Int, Int)> = [(i, j - 1), (i - 1, j), (i + 1, j), (i, j + 1)]
         for (iIndex, jIndex) in needBeRevealedItems {
             //Recursively reveal item around current item

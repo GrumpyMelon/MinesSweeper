@@ -1,2 +1,2 @@
 # MinesSweeper
-MinesSweeper for Mac.Using Swift.
+MinesSweeper for Mac. Using Swift.
