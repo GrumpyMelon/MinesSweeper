@@ -10,9 +10,12 @@ import Cocoa
 
 class MSMineItemView: MSFlippedView {
     var viewModel: MSMineItemViewModel!
-    var unravealView: MSFlippedView!
-    
+    var unrevealView: MSFlippedView!
+    var revealed: Bool!
+    var buttonAction: ButtonAction?
+
     override init(frame: CGRect) {
+        revealed = false
         super.init(frame : frame)
         wantsLayer = true
         layer?.backgroundColor = MSColor.itemNormalColor.cgColor
@@ -20,25 +23,30 @@ class MSMineItemView: MSFlippedView {
         layer?.borderColor = NSColor.textColor.cgColor;
         
         viewModel = MSMineItemViewModel()
-        unravealView = MSFlippedView(frame: NSRect(origin: .zero, size: frame.size))
-        unravealView.wantsLayer = true
-        unravealView.layer?.backgroundColor = MSColor.itemMaskColor.cgColor
-        self.addSubview(unravealView)
+        unrevealView = MSFlippedView(frame: NSRect(origin: .zero, size: frame.size))
+        unrevealView.wantsLayer = true
+        unrevealView.layer?.backgroundColor = MSColor.itemMaskColor.cgColor
+        self.addSubview(unrevealView)
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    override func draw(_ dirtyRect: NSRect) {
-        super.draw(dirtyRect)
+    //MARK: public func
+    
+    public func revealItem() {
+        if unrevealView.superview != nil {
+            unrevealView.removeFromSuperview()
+            revealed = true
+        }
     }
     
     //MARK: tap event
     
     override func mouseUp(with event: NSEvent) {
-        if unravealView.superview != nil {
-            unravealView.removeFromSuperview()
+        if buttonAction != nil {
+            buttonAction!()
         }
     }
     

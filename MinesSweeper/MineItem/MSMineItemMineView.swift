@@ -16,7 +16,7 @@ class MSMineItemMineView: MSMineItemView {
         mineImageView = NSImageView(image: NSImage(named: NSImage.Name("mine_icon"))!)
         super.init(frame: frame)
         
-        self.addSubview(mineImageView, positioned: .below, relativeTo: self.unravealView)
+        self.addSubview(mineImageView, positioned: .below, relativeTo: self.unrevealView)
         mineImageView.frame = self.bounds
     }
     

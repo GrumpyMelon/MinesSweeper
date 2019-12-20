@@ -24,7 +24,7 @@ class MSMineItemNumberView: MSMineItemView {
         
         super.init(frame: frame)
         
-        self.addSubview(numberLabel, positioned: .below, relativeTo: self.unravealView)
+        self.addSubview(numberLabel, positioned: .below, relativeTo: self.unrevealView)
     }
     
     required init?(coder aDecoder: NSCoder) {

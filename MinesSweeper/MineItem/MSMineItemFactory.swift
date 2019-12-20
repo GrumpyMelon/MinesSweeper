@@ -18,6 +18,7 @@ class MSMineItemFactory: NSObject {
             itemView = MSMineItemNumberView(frame: frame)
             itemView.setNumber(model.minesNumber)
         }
+        itemView.viewModel = model
         return itemView;
     }
 }
