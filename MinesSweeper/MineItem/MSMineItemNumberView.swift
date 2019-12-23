@@ -23,7 +23,7 @@ class MSMineItemNumberView: MSMineItemView {
         numberLabel.isEditable = false
         
         super.init(frame: frame)
-        
+        self.wantsLayer = true
         self.addSubview(numberLabel, positioned: .below, relativeTo: self.unrevealView)
     }
     
@@ -41,6 +41,7 @@ class MSMineItemNumberView: MSMineItemView {
             numberLabel.integerValue = number
             numberLabel.sizeToFit()
             numberLabel.frame = NSRect(origin: CGPoint(x: (self.frame.width - numberLabel.frame.width) / 2.0, y: (self.frame.height - numberLabel.frame.height) / 2.0), size: numberLabel.frame.size)
+            numberLabel.textColor = MSColor.numberColor[safe: number]
         }
     }
 }

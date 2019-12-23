@@ -26,7 +26,7 @@ class MSMineBoardConfig {
 //        case .Small:
             boardRow = 10
             boardCol = 10
-            minesNumber = 10
+            minesNumber = 30
 //        case .Middle: break
             
 //        case .Large: break
@@ -79,7 +79,7 @@ class MSMinesManager: NSObject {
                 }
             }
         }
-        
+        viewModel.status = .Default
         return viewModel
     }
 }

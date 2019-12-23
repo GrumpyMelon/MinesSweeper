@@ -53,6 +53,7 @@ class MSMainViewController: NSViewController {
         configModel()
         configViewLayout()
         configMines()
+        self.setBoardStatus(.Default)
     }
     
     func resetBoard() {
@@ -96,6 +97,13 @@ class MSMainViewController: NSViewController {
         }
     }
     
+    //MARK: - config status
+    
+    func setBoardStatus(_ status: MSBoardStatus) {
+        self.viewModel.status = status
+        self.topBarView.boardStatus = self.viewModel.status
+    }
+    
     //MARK: - bar action
     
     func barMiddleButtonAction() {
@@ -107,8 +115,7 @@ class MSMainViewController: NSViewController {
     func itemActoin(item: MSMineItemView, index: (i: Int, j: Int)) {
         switch item.viewModel.itemType {
         case .Mine:
-            //todo: 优化下。
-            self.resetBoard()
+            self.setBoardStatus(.Fail)
         case .Number:
             if item.viewModel.minesNumber == 0 {
                 self.revealBlankItemAround(index.i, index.j)

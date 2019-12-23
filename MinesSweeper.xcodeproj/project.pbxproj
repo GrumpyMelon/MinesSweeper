@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8038BBF123B0C88C006E2FFD /* MSDictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8038BBF023B0C88C006E2FFD /* MSDictionaryExtension.swift */; };
 		809C718523A8E6AC0026ACDF /* MSArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809C718423A8E6AC0026ACDF /* MSArrayExtension.swift */; };
 		809C718723AA074B0026ACDF /* MSFlippedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809C718623AA074B0026ACDF /* MSFlippedView.swift */; };
 		809C718E23AB6AD60026ACDF /* MSMineTopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809C718D23AB6AD60026ACDF /* MSMineTopBar.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8038BBF023B0C88C006E2FFD /* MSDictionaryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSDictionaryExtension.swift; sourceTree = "<group>"; };
 		809C718423A8E6AC0026ACDF /* MSArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSArrayExtension.swift; sourceTree = "<group>"; };
 		809C718623AA074B0026ACDF /* MSFlippedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSFlippedView.swift; sourceTree = "<group>"; };
 		809C718D23AB6AD60026ACDF /* MSMineTopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSMineTopBar.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				80B4678D239E6A7F00EBD92C /* MSMacro.swift */,
 				809C718423A8E6AC0026ACDF /* MSArrayExtension.swift */,
 				809C718623AA074B0026ACDF /* MSFlippedView.swift */,
+				8038BBF023B0C88C006E2FFD /* MSDictionaryExtension.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 				80B46797239F8F4A00EBD92C /* MSMineItemMineView.swift in Sources */,
 				80B4678E239E6A7F00EBD92C /* MSMacro.swift in Sources */,
 				80B46790239E6E1600EBD92C /* main.swift in Sources */,
+				8038BBF123B0C88C006E2FFD /* MSDictionaryExtension.swift in Sources */,
 				809C718723AA074B0026ACDF /* MSFlippedView.swift in Sources */,
 				80B4678B239E5C0600EBD92C /* MSMainViewController.swift in Sources */,
 				809C718E23AB6AD60026ACDF /* MSMineTopBar.swift in Sources */,

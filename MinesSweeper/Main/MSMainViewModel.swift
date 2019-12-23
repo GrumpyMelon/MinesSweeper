@@ -8,8 +8,15 @@
 
 import Cocoa
 
+enum MSBoardStatus: Int {
+    case Default = 0
+    case Fail = 1
+    case Succeed = 2
+}
+
 class MSMainViewModel: NSObject {
     var boardConfig: MSMineBoardConfig
+    var status: MSBoardStatus
     var itemsModelArray: Array<Array<MSMineItemViewModel>>
     var minesIndexArray: Array<(Int, Int)>
     
@@ -17,6 +24,7 @@ class MSMainViewModel: NSObject {
         boardConfig =  config
         itemsModelArray = Array()
         minesIndexArray = Array()
+        status = .Default
         super.init()
     }
 }
