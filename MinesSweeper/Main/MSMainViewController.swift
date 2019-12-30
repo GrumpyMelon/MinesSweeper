@@ -90,7 +90,7 @@ class MSMainViewController: NSViewController {
                 itemArray.append(item)
                 //todo: 循环引用问题？
                 item.buttonAction = {() -> Void in
-                    self.itemActoin(item: item,index: (i, j))
+                    self.itemAction(item: item,index: (i, j))
                 }
             }
             itemViewArray.append(itemArray)
@@ -112,30 +112,31 @@ class MSMainViewController: NSViewController {
     
     //MARK: - item action
     
-    func itemActoin(item: MSMineItemView, index: (i: Int, j: Int)) {
+    func itemAction(item: MSMineItemView, index: (i: Int, j: Int)) {
+        if self.viewModel.status != .Default {
+            //If board status is Succeed or Fail, then item will not response any event.
+            return;
+        }
         switch item.viewModel.itemType {
         case .Mine:
             self.setBoardStatus(.Fail)
+            break
         case .Number:
-            if item.viewModel.minesNumber == 0 {
-                self.revealBlankItemAround(index.i, index.j)
-            } else {
-                // do nothing
-            }
+            break
         }
+        self.revealItem(item: item, index: index)
     }
     
-    func revealBlankItemAround(_ i: Int, _ j: Int) {
-        let item: MSMineItemView? = self.itemViewArray[safe: i]?[safe: j]
-        let needReveal: Bool = (item != nil && !item!.revealed && item!.viewModel.itemType == .Number)
-        let needRecursiveReveal: Bool = (needReveal && item!.viewModel.minesNumber == 0)
+    func revealItem(item: MSMineItemView, index: (i: Int, j: Int)) {
+        let needReveal: Bool = (!item.revealed)
+        let needRecursiveReveal: Bool = (needReveal && item.viewModel.itemType == .Number && item.viewModel.minesNumber == 0)
         
         if !needReveal {
             //Not a blank item, then return.
             return
         }
         //Reveal blank item and number item
-        item!.revealItem()
+        item.revealItem()
         if !needRecursiveReveal {
             return;
         }
@@ -143,10 +144,14 @@ class MSMainViewController: NSViewController {
         
         //Only four items
         //todo： if current item is blank, would the diagonal one be reevealed?
+        let i = index.i, j = index.j
         let needBeRevealedItems: Array<(Int, Int)> = [(i, j - 1), (i - 1, j), (i + 1, j), (i, j + 1)]
         for (iIndex, jIndex) in needBeRevealedItems {
             //Recursively reveal item around current item
-            self.revealBlankItemAround(iIndex, jIndex)
+            let item: MSMineItemView? = self.itemViewArray[safe: iIndex]?[safe: jIndex]
+            if (item != nil) {
+                self.revealItem(item: item!, index:(iIndex, jIndex))
+            }
         }
     }
 }

@@ -52,8 +52,6 @@ class MSMineItemView: MSFlippedView {
         if buttonAction != nil {
             buttonAction!()
         }
-        //Do not call this function before buttonAction closure.
-        self.revealItem()
     }
     
     override func rightMouseUp(with event: NSEvent) {

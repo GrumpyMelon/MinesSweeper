@@ -26,7 +26,7 @@ class MSMineBoardConfig {
 //        case .Small:
             boardRow = 10
             boardCol = 10
-            minesNumber = 30
+            minesNumber = 10
 //        case .Middle: break
             
 //        case .Large: break
