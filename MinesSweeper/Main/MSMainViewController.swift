@@ -135,10 +135,10 @@ class MSMainViewController: NSViewController {
         case .Number:
             break
         }
-        self.revealItem(item: item, index: index)
+        self.revealItem(item: item, index: index, directClick: true)
     }
     
-    func revealItem(item: MSMineItemView, index: (i: Int, j: Int)) {
+    func revealItem(item: MSMineItemView, index: (i: Int, j: Int), directClick: Bool) {
         let needReveal: Bool = (!item.revealed)
         let needRecursiveReveal: Bool = (needReveal && item.viewModel.itemType == .Number && item.viewModel.minesNumber == 0)
         
@@ -147,7 +147,7 @@ class MSMainViewController: NSViewController {
             return
         }
         //Reveal blank item and number item
-        let revealSucceed = item.revealItem()
+        let revealSucceed = item.revealItem(directClick: directClick)
         if revealSucceed {
             self.viewModel.revealedItemAmount += 1
             self.checkBoardStatus()
@@ -165,7 +165,7 @@ class MSMainViewController: NSViewController {
             //Recursively reveal item around current item
             let item: MSMineItemView? = self.itemViewArray[safe: iIndex]?[safe: jIndex]
             if (item != nil) {
-                self.revealItem(item: item!, index:(iIndex, jIndex))
+                self.revealItem(item: item!, index:(iIndex, jIndex), directClick: false)
             }
         }
     }

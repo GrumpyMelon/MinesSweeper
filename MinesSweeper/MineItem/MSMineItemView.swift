@@ -45,15 +45,22 @@ class MSMineItemView: MSFlippedView {
     
     //MARK: public func
     
-    public func revealItem() -> Bool {
+    public func revealItem(directClick: Bool) -> Bool {
         var revealResult = false
-        if unrevealView.superview != nil {
+        var needReveal = true
+        if flagView != nil && flagView!.superview == self {
+            if directClick {
+                flagView!.removeFromSuperview()
+                revealResult = true
+            } else {
+                revealResult = false
+                needReveal = false
+            }
+        }
+        if needReveal && unrevealView.superview != nil {
             unrevealView.removeFromSuperview()
             revealed = true
             revealResult = true
-        }
-        if flagView != nil && flagView!.superview == self {
-            flagView!.removeFromSuperview()
         }
         return revealResult
     }
