@@ -27,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		8038BBF023B0C88C006E2FFD /* MSDictionaryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSDictionaryExtension.swift; sourceTree = "<group>"; };
+		8098FF9123BF1AD500960933 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		809C718423A8E6AC0026ACDF /* MSArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSArrayExtension.swift; sourceTree = "<group>"; };
 		809C718623AA074B0026ACDF /* MSFlippedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSFlippedView.swift; sourceTree = "<group>"; };
 		809C718D23AB6AD60026ACDF /* MSMineTopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSMineTopBar.swift; sourceTree = "<group>"; };
@@ -69,6 +70,7 @@
 		80B4676D239E5AE000EBD92C = {
 			isa = PBXGroup;
 			children = (
+				8098FF9123BF1AD500960933 /* README.md */,
 				80B46778239E5AE000EBD92C /* MinesSweeper */,
 				80B46777239E5AE000EBD92C /* Products */,
 			);

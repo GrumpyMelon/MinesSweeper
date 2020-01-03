@@ -17,6 +17,10 @@ enum MSBoardStatus: Int {
 class MSMainViewModel: NSObject {
     var boardConfig: MSMineBoardConfig
     var status: MSBoardStatus
+    
+    var revealedItemAmount: Int
+    var correctedItemAmount: Int
+    
     var itemsModelArray: Array<Array<MSMineItemViewModel>>
     var minesIndexArray: Array<(Int, Int)>
     
@@ -25,6 +29,8 @@ class MSMainViewModel: NSObject {
         itemsModelArray = Array()
         minesIndexArray = Array()
         status = .Default
+        revealedItemAmount = 0
+        correctedItemAmount = 0
         super.init()
     }
 }

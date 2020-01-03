@@ -92,6 +92,9 @@ class MSMainViewController: NSViewController {
                 item.buttonAction = {() -> Void in
                     self.itemAction(item: item,index: (i, j))
                 }
+                item.rightMouseUpAction = {() -> Void in
+                    self.itemMarkAction(item: item)
+                }
             }
             itemViewArray.append(itemArray)
         }
@@ -102,6 +105,14 @@ class MSMainViewController: NSViewController {
     func setBoardStatus(_ status: MSBoardStatus) {
         self.viewModel.status = status
         self.topBarView.boardStatus = self.viewModel.status
+        switch status {
+        case .Succeed:
+            self.boardView.userInteractionEnabled = false
+        case .Fail:
+            self.boardView.userInteractionEnabled = false
+        case .Default:
+            self.boardView.userInteractionEnabled = true
+        }
     }
     
     //MARK: - bar action
@@ -136,7 +147,11 @@ class MSMainViewController: NSViewController {
             return
         }
         //Reveal blank item and number item
-        item.revealItem()
+        let revealSucceed = item.revealItem()
+        if revealSucceed {
+            self.viewModel.revealedItemAmount += 1
+            self.checkBoardStatus()
+        }
         if !needRecursiveReveal {
             return;
         }
@@ -152,6 +167,31 @@ class MSMainViewController: NSViewController {
             if (item != nil) {
                 self.revealItem(item: item!, index:(iIndex, jIndex))
             }
+        }
+    }
+    
+    func itemMarkAction(item: MSMineItemView) {
+        let markStatus = item.markItem()
+        switch markStatus {
+        case .Correct:
+            self.viewModel.correctedItemAmount += 1
+            break
+        case .CancelCorrect:
+            self.viewModel.correctedItemAmount -= 1
+            break
+        default:
+            break
+        }
+        self.checkBoardStatus()
+    }
+    
+    //MARK: succeed check
+    
+    func checkBoardStatus() {
+        let itemAmount = self.viewModel.boardConfig.boardCol * self.viewModel.boardConfig.boardRow;
+        if self.viewModel.correctedItemAmount + self.viewModel.revealedItemAmount == itemAmount &&
+           self.viewModel.correctedItemAmount == self.viewModel.boardConfig.minesNumber {
+            self.setBoardStatus(.Succeed)
         }
     }
 }
